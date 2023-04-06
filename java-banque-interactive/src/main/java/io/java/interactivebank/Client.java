@@ -6,37 +6,45 @@ import java.util.stream.IntStream;
 public class Client {
     int id;
     String nom;
-    private Compte[] comptes = new Compte [100];
+    private Compte[] comptes = new Compte[100];
     int nbComptes;
 
+    public Client() {
+    }
 
-    public Client(){}
+    public Compte[] ajouterCompte() {
 
-    public Compte[] ajouterCompte(){
-        comptes[0]=new Compte();
+        for (int i = 0; i < 100; i++) {
+            // Générer des valeurs aléatoires pour le solde et le numéro de compte
+            int numeroCompte = (int) (Math.random() * 100);
+            long solde = (long) (Math.random() * 100);
 
-        for (int i =  0 ; i < comptes.length ; i++) {
-            comptes[i] =  new Compte() ;
+            // Créer un nouveau compte avec les valeurs aléatoires
+            Compte nouveauCompte = new Compte(numeroCompte, solde);
+
+            // Ajouter le nouveau compte au tableau
+            comptes[i] = nouveauCompte;
         }
         return comptes;
     };
-
 
     public String recupererNom() {
         return this.nom;
     };
 
-    public float  recupererSolde() {
-       /* Compte[] tousleSoldeDesComptes = new Compte[100];
-        for ( Compte solde: tousleSoldeDesComptes){
-            int sum = Arrays.stream(tousleSoldeDesComptes.solde).parallel().reduce(0,(a,b)->  a + b);
-            System.out.println("Array Sum = "+sum);
-        }*/
-        return 0;
+    public long recupererSolde() {
+        long solde = 0;
+        for (int i = 0; i < comptes.length; i++) {
+            if (comptes[i] != null) {
+                solde = comptes[i].solde;
+                afficherSolde(solde);
+            }
+        }
+        return solde;
     }
 
-    public boolean afficherSolde() {
-        return new Compte().afficherSolde();
+    public void afficherSolde(long solde) {
+        System.out.println("la somme des soldes de vos comptes est de" + " " + solde);
     };
 }
 
