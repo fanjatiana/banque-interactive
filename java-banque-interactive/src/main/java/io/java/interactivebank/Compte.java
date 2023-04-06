@@ -5,8 +5,8 @@ public class Compte {
     long solde;
 
     public Compte(){
-    numero = numero;
-    solde = solde;
+        long numeroCompte = this.numero;
+        long soldeCompte = this.solde;
     };
 
     public float depot(float valeur) {
@@ -18,8 +18,11 @@ public class Compte {
     public float recupererSolde() {
         return this.solde;
     };
-    public void afficherSolde() {
-        System.out.println("votre solde est de" + this.solde);
+
+    // type boolean : suggestion de java
+    public boolean afficherSolde() {
+      System.out.println("votre solde est de" + " "+ this.solde);
+        return true;
     };
     public float virer(float somme, long compteDestinataire){
        this.solde -= somme;

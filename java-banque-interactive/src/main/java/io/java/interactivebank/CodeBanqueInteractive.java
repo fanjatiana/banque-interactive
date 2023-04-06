@@ -64,3 +64,12 @@ public class CodeBanqueInteractive {
         }*/
 
 }
+
+
+
+
+/*this.nbComptes = 0;
+        for (int i = 0; i < comptes.length; i++) {
+            this.nbComptes = this.nbComptes + i;
+        }
+        return this.nbComptes;*/

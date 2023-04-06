@@ -10,26 +10,33 @@ public class Client {
     int nbComptes;
 
 
-    public Client(){
-        id=id;
-        nom = nom;
-    }
+    public Client(){}
 
-    public void ajouterCompte(){};
+    public Compte[] ajouterCompte(){
+        comptes[0]=new Compte();
+
+        for (int i =  0 ; i < comptes.length ; i++) {
+            comptes[i] =  new Compte() ;
+        }
+        return comptes;
+    };
+
+
     public String recupererNom() {
         return this.nom;
     };
 
-    public int  recupererSolde() {
-    this.nbComptes = 0;
-        for (int i = 0; i < comptes.length; i++) {
-            this.nbComptes = this.nbComptes + i;
-        }
-        return this.nbComptes;
-    };
+    public float  recupererSolde() {
+       /* Compte[] tousleSoldeDesComptes = new Compte[100];
+        for ( Compte solde: tousleSoldeDesComptes){
+            int sum = Arrays.stream(tousleSoldeDesComptes.solde).parallel().reduce(0,(a,b)->  a + b);
+            System.out.println("Array Sum = "+sum);
+        }*/
+        return 0;
+    }
 
-    public Compte afficherSolde() {
-        return null;
+    public boolean afficherSolde() {
+        return new Compte().afficherSolde();
     };
 }
 

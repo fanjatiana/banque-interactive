@@ -1,11 +1,12 @@
 package io.java.interactivebank;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+      Scanner scanner = new Scanner(System.in);
 
       Compte compteClient1 = new Compte();
         compteClient1.numero=51566665;
@@ -22,16 +23,22 @@ public class Main {
       float virementVersCompteClient2 = new Compte().virer(sommeAVirer, compteClient2.numero);
       System.out.println( virementVersCompteClient2);
 
-      // vérifie si le virement a bien été effectué
-      boolean isTrue = true;
 
-      if(isTrue){
-          compteClient1.solde -= sommeAVirer;
-          System.out.println( "Reste au client1" + " " + compteClient1.recupererSolde());
-          compteClient2.solde += sommeAVirer;
-          System.out.println( " Client2 a maintenant" + " " +compteClient2.recupererSolde());
-      } else{
-          isTrue = false;
-      }
+      compteClient1.solde -= sommeAVirer;
+      System.out.println( compteClient1.afficherSolde());
+      compteClient2.solde += sommeAVirer;
+      System.out.println(compteClient2.afficherSolde());
+
+
+    // exercice 3.3
+
+    Compte nouveauClient= new Compte();
+    nouveauClient.numero = 51541;
+    nouveauClient.solde = 200;
+
+    Compte[] ceCompte = new Client().ajouterCompte();
+
+        System.out.println(Arrays.deepToString(ceCompte));
+
     }
 }
