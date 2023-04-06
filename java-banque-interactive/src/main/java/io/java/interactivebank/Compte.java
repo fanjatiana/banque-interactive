@@ -1,25 +1,29 @@
 package io.java.interactivebank;
 
 public class Compte {
-    int numero;
-    int solde;
+    long numero;
+    long solde;
 
     public Compte(){
     numero = numero;
     solde = solde;
     };
 
-    public void depot(float valeur) {};
-    public float retrait(float valeur) {
-        return valeur;
+    public float depot(float valeur) {
+       return this.solde+=valeur;
     };
-    public float recupererSolde(float valeur) {
-        return valeur;
+    public float retrait(float valeur) {
+        return this.solde-=valeur;
+    };
+    public float recupererSolde() {
+        return this.solde;
     };
     public void afficherSolde() {
-
+        System.out.println("votre solde est de" + this.solde);
     };
-    public void virer(float somme,int compteDestinataire){
-        System.out.println("Votre virement de" +somme+ "a été envoyé sur le compte"+ compteDestinataire);
+    public float virer(float somme, long compteDestinataire){
+       this.solde -= somme;
+        System.out.println("la somme de" + " " + somme + " "+ "a bien été virée au destinataire numéro " + compteDestinataire);
+        return this.solde;
     }
 }

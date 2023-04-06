@@ -4,12 +4,14 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Client {
+    int id;
     String nom;
     private Compte[] comptes = new Compte [100];
     int nbComptes;
 
 
     public Client(){
+        id=id;
         nom = nom;
     }
 
