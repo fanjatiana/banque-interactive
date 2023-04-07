@@ -1,5 +1,6 @@
 package io.java.interactivebank;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -43,5 +44,47 @@ public class Main {
             }
         }
         System.out.println("la somme des soldes de vos comptes est de" + " " + somme);
+
+
+        // exercice 4 :
+
+        //ajouter un client
+       // String client1= String.valueOf(new Client());
+        //client1="DUPONT";
+        //Banque banque = new Banque();
+        //banque.ajouterClient(client1);
+
+        // ajouter des clients dans un tableau
+        ArrayList<Long> clients = new ArrayList<Long>();
+
+        //création des clients
+        
+        String nomClient1;
+        nomClient1 = "Dasilva";
+        Compte compteClientDasilva = new Compte(84564, 10850);
+       
+        String nomClient2;
+        nomClient2= "Dupuis";
+        Compte compteClientDupuis = new Compte(44564, 24050);
+        
+
+        Banque compte2 = new Banque();
+        compte2.ajouterClient(nomClient1,compteClientDasilva);
+        Banque compte1 = new Banque();
+        compte1.ajouterClient(nomClient2,compteClientDupuis);
+
+        for (long i : clients) {
+            System.out.println(i);
+        }
+
+        // bilan compte client
+        Banque client2 = new Banque();
+        client2.bilanClient(nomClient1,compteClientDasilva);
+
+        // bilan général des comptes et clients
+
+        Banque afficherBilanGeneral = new Banque();
+        afficherBilanGeneral.afficherBilan(ceCompte);
+
     }
 }

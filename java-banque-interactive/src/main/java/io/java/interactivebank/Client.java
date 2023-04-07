@@ -1,16 +1,15 @@
 package io.java.interactivebank;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Client {
-    int id;
-    String nom;
+    private String nom;
     private Compte[] comptes = new Compte[100];
-    int nbComptes;
+    private int nbComptes;
 
-    public Client() {
-    }
+    public Client() {}
 
     public Compte[] ajouterCompte() {
 
@@ -28,9 +27,9 @@ public class Client {
         return comptes;
     };
 
-    public String recupererNom() {
-        return this.nom;
-    };
+    public String getNom() {
+        return nom;
+    }
 
     public long recupererSolde() {
         long solde = 0;
@@ -46,5 +45,9 @@ public class Client {
     public void afficherSolde(long solde) {
         System.out.println("la somme des soldes de vos comptes est de" + " " + solde);
     };
+
+    public Compte[] getComptes() {
+        return comptes;
+    }
 }
 
