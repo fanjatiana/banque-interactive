@@ -16,8 +16,6 @@ public class Banque {
         clientsBanque.add(nouveauClient);
     }
 
-    ;
-
     public void bilanClient(Client client) {
         System.out.println("Bilan du client " + client.getNom() + " :");
         for (int i = 0; i < client.getNbComptes(); i++) {
@@ -25,9 +23,6 @@ public class Banque {
             System.out.println("numéro de compte :" + compte.numero + " - " + "solde :" + compte.getSolde());
         }
     }
-
-    ;
-
 
     public void afficherBilan() {
         System.out.println("Bilan général de  " + nom + " :");

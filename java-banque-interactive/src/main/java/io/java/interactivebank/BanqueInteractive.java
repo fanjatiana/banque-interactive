@@ -5,13 +5,11 @@ import java.util.Scanner;
 
 public class BanqueInteractive {
     public Scanner scanner = new Scanner(System.in);
-
     private ArrayList<Client> listeDeclients;
 
     public BanqueInteractive() {
         listeDeclients = new ArrayList<Client>();
     }
-
 
     public void interactionAjoutClient(Banque banque) {
         Scanner scanner = new Scanner(System.in);
@@ -70,8 +68,6 @@ public class BanqueInteractive {
                 break;
         }
     }
-
-
 }
 
 

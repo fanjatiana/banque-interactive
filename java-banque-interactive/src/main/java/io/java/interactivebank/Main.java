@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         Banque miniBanque = new Banque("Minibanque");
+
         // virement entre 2 clients
         miniBanque.ajouterClient("Dupuis");
         Client clientDupuis = miniBanque.trouverClient("Dupuis");
@@ -16,7 +17,6 @@ public class Main {
         System.out.println(clientDupuis.getNom());
         System.out.println(clientDupuis.getComptes(0).solde);
         System.out.println("Dupuis a maintenant sur son compte : " + clientDupuis.recupererSoldeTotal());
-
 
         miniBanque.ajouterClient("Dupont");
         Client clientDupond = miniBanque.trouverClient("Dupont");
@@ -33,10 +33,7 @@ public class Main {
         // ajout des clients dans la banque : Mini banque
         System.out.println(miniBanque.getClientsBanque().get(0).getNom());
 
-
         // interaction avec la banque interactive
-
-
         Banque miniBanque2 = new Banque("Mini banque 2");
         Scanner scanner = new Scanner(System.in);
         BanqueInteractive banqueInteractive = new BanqueInteractive();
@@ -66,13 +63,12 @@ public class Main {
                     break;
                 case "5":
                     System.out.println("Au revoir !");
-
+                    // reste à mettre un system.out pour vider et quitter la console
                     break;
                 default:
                     System.out.println("Choix invalide.");
             }
         }
-
 
     }
 }

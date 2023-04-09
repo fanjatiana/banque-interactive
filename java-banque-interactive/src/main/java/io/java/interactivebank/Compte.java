@@ -10,27 +10,17 @@ public class Compte {
         this.solde = soldeCompte;
     }
 
-    ;
-
     public float depot(float valeur) {
         return this.solde += valeur;
     }
-
-    ;
 
     public float retrait(float valeur) {
         return this.solde -= valeur;
     }
 
-    ;
-
-
-    // type boolean : suggestion de java
     public void afficherSolde() {
         System.out.println("votre solde est de" + " " + this.solde);
     }
-
-    ;
 
     public float getSolde() {
         return solde;

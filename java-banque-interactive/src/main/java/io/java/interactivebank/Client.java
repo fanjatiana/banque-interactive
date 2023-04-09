@@ -19,7 +19,6 @@ public class Client {
     }
 
     public void ajouterCompte() {
-
         if (nbComptes < 100) {
             numeroComptes++;
             // Ajouter le nouveau compte au tableau
@@ -42,8 +41,6 @@ public class Client {
     public void afficherSolde() {
         System.out.println("la somme des soldes de vos comptes est de" + " " + recupererSoldeTotal());
     }
-
-    ;
 
     public String getNom() {
         return nom;
