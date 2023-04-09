@@ -4,47 +4,54 @@ import java.util.ArrayList;
 
 public class Banque {
     private String nom;
-    //private Client[] listeClientsBanque = new Client[100];
-    //private ArrayList clientsBanque = new ArrayList();
-    private ArrayList<Long> clientsBanque = new ArrayList<Long>();
+    private ArrayList<Client> clientsBanque;
 
-    public Banque() {
+    public Banque(String nom) {
         this.nom = nom;
-        this.clientsBanque = clientsBanque;
+        this.clientsBanque = new ArrayList<Client>();
     }
 
-    public void ajouterClient(String nomClient, Compte client) {
-        clientsBanque.add(client.numero);
-        clientsBanque.add(client.solde);
-        System.out.println("Votre client au nom de " + nomClient + " ayant pour numéro " + client.numero + " ,a bien été ajouté ! Son solde est de: " + client.solde);
-        ;
-    }
-
-    ;
-
-    public void bilanClient(String nomClient, Compte compteClient) {
-        System.out.println("Client" + nomClient + " - " + "numéro de compte: " + compteClient.numero + " - " + "solde de compte: " + compteClient.solde);
+    public void ajouterClient(String nomClient) {
+        Client nouveauClient = new Client(nomClient);
+        clientsBanque.add(nouveauClient);
     }
 
     ;
 
-    public void afficherBilan( Compte[] compteClient) {
-        double total = 0;
+    public void bilanClient(Client client) {
+        System.out.println("Bilan du client " + client.getNom() + " :");
+        for (int i = 0; i < client.getNbComptes(); i++) {
+            Compte compte = client.getComptes(i);
+            System.out.println("numéro de compte :" + compte.numero + " - " + "solde :" + compte.getSolde());
+        }
+    }
 
-        for (int i = 0; i < compteClient.length; i++) {
-            System.out.println("Clients: " + i);
+    ;
 
-        // boucle à travers tous les comptes du client
-        for (int j = 0; j < compteClient.length; j++) {
-            System.out.println("  Compte " + compteClient[j].numero + " : " + compteClient[j].solde);
-            if (compteClient[j] != null) {
-                long solde = new Client().recupererSolde();
-                total += compteClient[j].solde + solde;
+
+    public void afficherBilan() {
+        System.out.println("Bilan général de  " + nom + " :");
+        for (Client client : clientsBanque) {
+            bilanClient(client);
+        }
+    }
+
+    public Client trouverClient(String nomClient) {
+        for (Client c : clientsBanque) {
+            if (c.getNom().equals(nomClient)) {
+                return c;
             }
         }
-        }
-        System.out.println("Bilan général des soldes : " + total);
+        return null;
     }
 
+    public ArrayList<Client> getClientsBanque() {
+        return clientsBanque;
+    }
 
+    public void renflouer() {
+        for (int i = 0; i < clientsBanque.size(); i++) {
+            clientsBanque.get(i).renflouer();
+        }
+    }
 }

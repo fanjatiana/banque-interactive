@@ -8,46 +8,79 @@ public class Client {
     private String nom;
     private Compte[] comptes = new Compte[100];
     private int nbComptes;
+    private int numeroComptes;
 
-    public Client() {}
+    public Client(String nom) {
+        this.nom = nom;
+        this.numeroComptes = 25;
+        this.comptes[0] = new Compte(numeroComptes, 500);
+        this.nbComptes = 1; // 1 client a au moins 1 compte
 
-    public Compte[] ajouterCompte() {
+    }
 
-        for (int i = 0; i < 100; i++) {
-            // Générer des valeurs aléatoires pour le solde et le numéro de compte
-            int numeroCompte = (int) (Math.random() * 100);
-            long solde = (long) (Math.random() * 100);
+    public void ajouterCompte() {
 
-            // Créer un nouveau compte avec les valeurs aléatoires
-            Compte nouveauCompte = new Compte(numeroCompte, solde);
-
+        if (nbComptes < 100) {
+            numeroComptes++;
             // Ajouter le nouveau compte au tableau
-            comptes[i] = nouveauCompte;
+            comptes[nbComptes] = new Compte(numeroComptes, 500);
+            nbComptes++;
+        } else {
+            System.out.println("Vous ne pouvez plus ajouter de compte (max 100 comptes)");
         }
-        return comptes;
-    };
+    }
+
+
+    public float recupererSoldeTotal() {
+        float soldeTotal = 0;
+        for (int i = 0; i < nbComptes; i++) {
+            soldeTotal += comptes[i].getSolde();
+        }
+        return soldeTotal;
+    }
+
+    public void afficherSolde() {
+        System.out.println("la somme des soldes de vos comptes est de" + " " + recupererSoldeTotal());
+    }
+
+    ;
 
     public String getNom() {
         return nom;
     }
 
-    public long recupererSolde() {
-        long solde = 0;
-        for (int i = 0; i < comptes.length; i++) {
-            if (comptes[i] != null) {
-                solde = comptes[i].solde;
-                afficherSolde(solde);
-            }
+    public Compte getComptes(int index) {
+        if (index >= 0 && index < nbComptes) {
+            return comptes[index];
+        } else {
+            return null;
         }
-        return solde;
     }
 
-    public void afficherSolde(long solde) {
-        System.out.println("la somme des soldes de vos comptes est de" + " " + solde);
-    };
+    public int getNbComptes() {
+        return nbComptes;
+    }
 
-    public Compte[] getComptes() {
-        return comptes;
+    public void renflouer() {
+        if (this.comptes[0].isSoldeNegatif()) {
+            float soldeTotal = recupererSoldeTotal();
+            float montantNecessaire = Math.abs(this.comptes[0].getSolde());
+            for (int i = 0; i < nbComptes; i++) {
+                Compte c = comptes[i];
+                if (c != this.comptes[0]) {
+                    float montantDisponible = c.getSolde() - soldeTotal;
+                    if (montantDisponible >= montantNecessaire) {
+                        c.retrait(montantNecessaire);
+                        this.comptes[0].depot(montantNecessaire);
+                        break;
+                    } else {
+                        c.retrait(montantDisponible);
+                        this.comptes[0].depot(montantDisponible);
+                        montantNecessaire -= montantDisponible;
+                    }
+                }
+            }
+        }
     }
 }
 

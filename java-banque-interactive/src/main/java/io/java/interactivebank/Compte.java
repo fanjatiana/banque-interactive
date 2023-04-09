@@ -1,36 +1,49 @@
 package io.java.interactivebank;
 
 public class Compte {
-    long numero;
-    long solde;
+    int numero;
+    float solde;
 
-    public Compte(long numeroCompte, long soldeCompte) {
-        this.numero = numeroCompte;;
+    public Compte(int numeroCompte, float soldeCompte) {
+        this.numero = numeroCompte;
+        ;
         this.solde = soldeCompte;
-    };
+    }
+
+    ;
 
     public float depot(float valeur) {
         return this.solde += valeur;
-    };
+    }
+
+    ;
 
     public float retrait(float valeur) {
         return this.solde -= valeur;
-    };
-
-    public float recupererSolde() {
-        return this.solde;
-    };
-
-    // type boolean : suggestion de java
-    public boolean afficherSolde() {
-        System.out.println("votre solde est de" + " " + this.solde);
-        return true;
-    };
-
-    public float virer(float somme, long compteDestinataire) {
-        this.solde -= somme;
-        System.out.println("la somme de" + " " + somme + " " + "a bien été virée au destinataire numéro " + compteDestinataire);
-        return this.solde;
     }
 
+    ;
+
+
+    // type boolean : suggestion de java
+    public void afficherSolde() {
+        System.out.println("votre solde est de" + " " + this.solde);
+    }
+
+    ;
+
+    public float getSolde() {
+        return solde;
+    }
+
+    public float virer(float valeur, Compte compteDestinataire) {
+        this.solde -= valeur;
+        compteDestinataire.depot(valeur);
+        System.out.println("la valeur de" + " " + valeur + " " + "a bien été virée au destinataire numéro " + compteDestinataire.numero);
+        return valeur;
+    }
+
+    public boolean isSoldeNegatif() {
+        return solde < 0;
+    }
 }
